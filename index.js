@@ -21,31 +21,7 @@ app.use(
   })
 );
 
-// app.use('/api/cheeses', (req, res, next) => {
-//   const cheeses = [
-//     'Bath Blue',
-//     'Barkham Blue',
-//     'Buxton Blue',
-//     'Cheshire Blue',
-//     'Devon Blue',
-//     'Dorset Blue Vinney',
-//     'Dovedale',
-//     'Exmoor Blue',
-//     'Harbourne Blue',
-//     'Lanark Blue',
-//     'Lymeswold',
-//     'Oxford Blue',
-//     'Shropshire Blue',
-//     'Stichelton',
-//     'Stilton',
-//     'Blue Wensleydale',
-//     'Yorkshire Blue'
-//   ];
-
-//   res.json(cheeses);
-// });
-
-app.use('/api/diary', (req, res, next) => {
+app.get('/api/diary', (req, res, next) => {
   const a = {
     error: null,
     diaryFilms: [
@@ -54,30 +30,72 @@ app.use('/api/diary', (req, res, next) => {
         imdbID: 'tt3896198',
         title: 'Guardians of the Galaxy Vol. 2',
         plot:
-          'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-        actors: ['Jessica Chastain', 'Joaquin Phoenix']
+          "The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill's true parentage.",
+        actors: ['Jessica Chastain', 'Joaquin Phoenix'],
+        poster:
+          'https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg',
+        ratings: [
+          {
+            Source: 'Internet Movie Database',
+            Value: '7.7/10'
+          },
+          {
+            Source: 'Rotten Tomatoes',
+            Value: '83%'
+          },
+          {
+            Source: 'Metacritic',
+            Value: '67/100'
+          }
+        ]
       },
       {
         diaryID: '22345',
         imdbID: 'tt3896198',
         title: 'Guardians of the Galaxy Vol. 2',
         plot:
-          'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-        actors: ['Jessica Chastain', 'Joaquin Phoenix']
+          "The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill's true parentage.",
+        actors: ['Jessica Chastain', 'Joaquin Phoenix'],
+        poster:
+          'https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg',
+        ratings: [
+          {
+            Source: 'Internet Movie Database',
+            Value: '7.7/10'
+          },
+          {
+            Source: 'Rotten Tomatoes',
+            Value: '83%'
+          },
+          {
+            Source: 'Metacritic',
+            Value: '67/100'
+          }
+        ]
       },
       {
         diaryID: '32345',
         imdbID: 'tt3896198',
         title: 'Guardians of the Galaxy Vol. 2',
         plot:
-          'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-        actors: ['Jessica Chastain', 'Joaquin Phoenix']
-      }
-    ],
-    searchFilms: [
-      {
-        imdbID: 'tt3896198',
-        title: 'Guardians of the Galaxy Vol. 2'
+          "The Guardians must fight to keep their newfound family together as they unravel the mystery of Peter Quill's true parentage.",
+        actors: ['Jessica Chastain', 'Joaquin Phoenix'],
+        poster:
+          'https://m.media-amazon.com/images/M/MV5BMTg2MzI1MTg3OF5BMl5BanBnXkFtZTgwNTU3NDA2MTI@._V1_SX300.jpg',
+        ratings: [
+          {
+            Source: 'Internet Movie Database',
+            Value: '7.7/10'
+          },
+          {
+            Source: 'Rotten Tomatoes',
+            Value: '83%'
+          },
+          {
+            Source: 'Metacritic',
+            Value: '67/100'
+          }
+        ]
       }
     ]
   };
