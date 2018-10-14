@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // Models
 const Films = require('../models/films');
 
+// Get all films
 exports.getAllFilms = function(req, res, next) {
   // const { folderID, tagID } = req.query;
 
@@ -14,3 +15,11 @@ exports.getAllFilms = function(req, res, next) {
     })
     .catch(next);
 };
+
+// Get film by ID
+
+// Update film by ID
+
+// Create new film
+
+// Delete film
