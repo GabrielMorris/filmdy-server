@@ -7,8 +7,10 @@ const Films = require('../models/films');
 // Get all films
 exports.getAllFilms = function(req, res, next) {
   // const { folderID, tagID } = req.query;
+  const { userID } = req.query;
+  console.log(req.query);
 
-  Films.find()
+  Films.find({ userID })
     .then(results => {
       console.log(results);
       res.json(results);
