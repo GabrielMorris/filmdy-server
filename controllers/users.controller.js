@@ -50,41 +50,41 @@ exports.createNewUser = function(req, res, next) {
   }
 
   // TODO: auth
-  // return User.hashPassword(password)
-  // .then(digest => {
-  //   const newUser = {
-  //     username,
-  //     password: digest
-  //   };
-  //   return User.create(newUser);
-  // })
-  // .then(result => {
-  //   return res
-  //     .status(201)
-  //     .location(`/api/users/${result.id}`)
-  //     .json(result);
-  // })
-  // .catch(err => {
-  //   if (err.code === 11000) {
-  //     err = new Error('The username already exists');
-  //     err.status = 400;
-  //   }
-  //   next(err);
-  // });
-
-  return User.create({ username, password })
+  return User.hashPassword(password)
+    .then(digest => {
+      const newUser = {
+        username,
+        password: digest
+      };
+      return User.create(newUser);
+    })
     .then(result => {
       return res
         .status(201)
         .location(`/api/users/${result.id}`)
         .json(result);
     })
-    .catch(error => {
-      if (error.code === 11000) {
+    .catch(err => {
+      if (err.code === 11000) {
         err = new Error('The username already exists');
         err.status = 400;
-
-        next(err);
       }
+      next(err);
     });
+
+  // return User.create({ username, password })
+  //   .then(result => {
+  //     return res
+  //       .status(201)
+  //       .location(`/api/users/${result.id}`)
+  //       .json(result);
+  //   })
+  //   .catch(error => {
+  //     if (error.code === 11000) {
+  //       err = new Error('The username already exists');
+  //       err.status = 400;
+
+  //       next(err);
+  //     }
+  //   });
 };

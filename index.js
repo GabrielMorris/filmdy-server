@@ -14,6 +14,12 @@ const { dbConnect } = require('./db-mongoose');
 // Routers
 const filmsRouter = require('./routes/films.router');
 const usersRouter = require('./routes/users.router');
+const authRouter = require('./routes/auth.router');
+
+// Passport
+const passport = require('passport');
+const localStrategy = require('./passport/local');
+const jwtStrategy = require('./passport/jwt');
 
 const app = express();
 
@@ -34,9 +40,14 @@ app.use(
 // Parse request body
 app.use(express.json());
 
+// Passport uses
+passport.use(localStrategy);
+passport.use(jwtStrategy);
+
 // Mount routers
 app.use('/api/films', filmsRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/login', authRouter);
 
 // Custom 404 Not Found route handler
 app.use((req, res, next) => {

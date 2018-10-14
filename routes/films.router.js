@@ -1,10 +1,18 @@
+// Express
 const express = require('express');
 const router = express.Router();
-// const passport = require('passport');
+
+// Passport
+const passport = require('passport');
+
+// Controllers
 const FilmController = require('../controllers/films.controller');
 
 // TODO: authentication stuff here
-// router.use('/');
+router.use(
+  '/',
+  passport.authenticate('jwt', { session: false, failWithError: true })
+);
 
 /* GET/POST */
 router.route('/').get(FilmController.getAllFilms);
