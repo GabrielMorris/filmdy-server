@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 const filmSchema = new mongoose.Schema({
-  diaryFilms: { type: Array, required: true }
+  diaryFilms: { type: Array, required: true },
+  userID: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
 // filmSchema.index({ name: 1, userID: 1 }, { unique: true }); -- TODO: not sure what this does

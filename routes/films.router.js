@@ -15,7 +15,10 @@ router.use(
 );
 
 /* GET/POST */
-router.route('/').get(FilmController.getAllFilms);
+router
+  .route('/')
+  .get(FilmController.getAllFilms)
+  .post(FilmController.createNewFilm);
 
 /* GET/PUT/DELETE by ID */
 

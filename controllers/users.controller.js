@@ -1,4 +1,5 @@
 const User = require('../models/users');
+const Films = require('../models/films');
 
 exports.createNewUser = function(req, res, next) {
   const { username, password } = req.body;
@@ -49,7 +50,7 @@ exports.createNewUser = function(req, res, next) {
     return next(err);
   }
 
-  // TODO: auth
+  let userID;
   return User.hashPassword(password)
     .then(digest => {
       const newUser = {
@@ -59,10 +60,20 @@ exports.createNewUser = function(req, res, next) {
       return User.create(newUser);
     })
     .then(result => {
+      console.log(result);
+      userID = result.id;
       return res
         .status(201)
         .location(`/api/users/${result.id}`)
         .json(result);
+    })
+    .then(() => {
+      const newFilmDiaryObject = {
+        userID,
+        diaryFilms: []
+      };
+
+      return Films.create(newFilmDiaryObject);
     })
     .catch(err => {
       if (err.code === 11000) {
