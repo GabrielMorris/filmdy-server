@@ -88,3 +88,31 @@ exports.createNewFilm = function(req, res, next) {
 };
 
 // Delete film
+exports.deleteFilm = function(req, res, next) {
+  const { userID, imdbID } = req.body;
+
+  Films.findOne({ userID })
+    .then(existingDiary => {
+      console.log(existingDiary);
+
+      const updatedDiary = existingDiary;
+
+      updatedDiary.diaryFilms = updatedDiary.diaryFilms.filter(
+        film => film.imdbID != imdbID
+      );
+
+      return updatedDiary;
+    })
+    .then(updatedDiary => {
+      return Films.findOneAndUpdate({ userID }, updatedDiary, { new: true })
+        .then(result => {
+          console.log(result);
+          return result;
+        })
+        .catch(error => next(error));
+    })
+    .then(() => {
+      res.status(204).end();
+    })
+    .catch(error => next(error));
+};
