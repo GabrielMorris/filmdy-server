@@ -19,6 +19,7 @@ router
   .route('/')
   .get(FilmController.getAllFilms)
   .post(FilmController.createNewFilm)
+  .put(FilmController.updateFilmRating)
   .delete(FilmController.deleteFilm);
 
 /* GET/PUT/DELETE by ID */

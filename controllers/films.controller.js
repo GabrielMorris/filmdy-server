@@ -1,6 +1,3 @@
-// Mongoose
-const mongoose = require('mongoose');
-
 // CUID
 const cuid = require('cuid');
 
@@ -22,9 +19,41 @@ exports.getAllFilms = function(req, res, next) {
     .catch(next);
 };
 
-// Get film by ID
-
 // Update film by ID
+exports.updateFilmRating = function(req, res, next) {
+  const { userID, imdbID } = req.body;
+
+  Films.findOne({ userID })
+    .then(existingDiary => {
+      console.log(existingDiary);
+
+      const updatedDiary = existingDiary;
+
+      updatedDiary.diaryFilms.map(film => {
+        if (film.imdbID === imdbID) {
+          console.log('HITTING THE IF BLOCK');
+          film.userRating = !film.userRating;
+          return film;
+        }
+        console.log('NOT HITTING THE IF BLOCK');
+        return film;
+      });
+      console.log(existingDiary.diaryFilms);
+      console.log(updatedDiary.diaryFilms);
+
+      return updatedDiary;
+    })
+    .then(updatedDiary => {
+      return Films.findOneAndUpdate({ userID }, updatedDiary, { new: true })
+        .then(result => {
+          console.log(result);
+          return result;
+        })
+        .catch(error => next(error));
+    })
+    .then(result => res.status(200).json(result))
+    .catch(error => next(error));
+};
 
 // Create new film
 exports.createNewFilm = function(req, res, next) {
