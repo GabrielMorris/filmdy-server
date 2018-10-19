@@ -58,6 +58,7 @@ exports.updateFilmRating = function(req, res, next) {
 // Create new film
 exports.createNewFilm = function(req, res, next) {
   const { userID, film } = req.body;
+  console.log(req.user.id);
 
   /* === Validate the film === */
   const requiredKVPs = [

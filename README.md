@@ -1,45 +1,122 @@
-# Thinkful Backend Template
+# Filmdy
 
-A template for developing and deploying Node.js apps.
+## Description
 
-## Getting started
+Filmdy is a film diary application built with React, Redux, MongoDB, and Node.js. It lets you find films, add them to a diary, rate them, and provides detailed information sourced from the [OMDb API](http://www.omdbapi.com/) to help users manage and keep track of all of the great (and, of course, not so great) films that they have seen.
 
-### Setting up a project
+## Deployed version
 
-* Move into your projects directory: `cd ~/YOUR_PROJECTS_DIRECTORY`
-* Clone this repository: `git clone https://github.com/Thinkful-Ed/backend-template YOUR_PROJECT_NAME`
-* Move into the project directory: `cd YOUR_PROJECT_NAME`
-* Install the dependencies: `npm install`
-* Create a new repo on GitHub: https://github.com/new
-    * Make sure the "Initialize this repository with a README" option is left unchecked
-* Update the remote to point to your GitHub repository: `git remote set-url origin https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME`
+You can find Filmdy hosted [here]() on Heroku.
 
-### Working on the project
+## Screenshots
 
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Run the development task: `npm start`
-    * Starts a server running at http://localhost:8080
-    * Automatically restarts when any of your files change
+### Landing page
 
-## Databases
+![Landing page](https://i.imgur.com/3LXrko6.jpg)
 
-By default, the template is configured to connect to a MongoDB database using Mongoose.  It can be changed to connect to a PostgreSQL database using Knex by replacing any imports of `db-mongoose.js` with imports of `db-knex.js`, and uncommenting the Postgres `DATABASE_URL` lines in `config.js`.
+### Login page
 
-## Deployment
+![Login page](https://i.imgur.com/MVW6pTz.png)
 
-Requires the [Heroku CLI client](https://devcenter.heroku.com/articles/heroku-command-line).
+### Film diary
 
-### Setting up the project on Heroku
+![Film diary](https://i.imgur.com/6W26mDV.jpg)
 
-* Move into the project directory: `cd ~/YOUR_PROJECTS_DIRECTORY/YOUR_PROJECT_NAME`
-* Create the Heroku app: `heroku create PROJECT_NAME`
+### Search
 
-* If your backend connects to a database, you need to configure the database URL:
-    * For a MongoDB database: `heroku config:set DATABASE_URL=mongodb://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
-    * For a PostgreSQL database: `heroku config:set DATABASE_URL=postgresql://USERNAME:PASSWORD@HOST:PORT/DATABASE_NAME`
+![Search](https://i.imgur.com/pom5ygO.jpg)
 
-* If you are creating a full-stack app, you need to configure the client origin: `heroku config:set CLIENT_ORIGIN=https://www.YOUR_DEPLOYED_CLIENT.com`
+### Film modal
 
-### Deploying to Heroku
+![Film modal](https://i.imgur.com/QrW8qiG.png)
 
-* Push your code to Heroku: `git push heroku master`
+## Tech stack
+
+Filmdy makes use of the latest and greatest technologies in front and backend development, including:
+
+- React for building the frontend
+  - React Burger Menu
+  - React CSS Grid
+  - React DOM
+  - React Lazy Hero
+  - React Modal
+  - React Router
+  - React Spinners
+- Redux for state management
+  - Redux Burger Menu
+  - Redux Form
+  - Redux Thunk
+  - JWT Decode
+- Node.js for the backend
+- Express.js for backend web framework
+  - Bcrypt.js for encryption
+  - Passport.js and JWTs for authentication
+  - Morgan for logging
+- MongoDB
+  - Mongoose
+- Testing
+  - Enzyme for React tests
+  - Mocha, Chai, Chai-HTTP, and NYC for backend testing
+
+## Folder structure
+
+```
+client/
+  README.md
+  package.json
+
+  public/
+    Static project template
+  src/
+  config.js - DB/API configuration
+  index.js - Root React component
+  local-storage.js - Functions for managing localStorage
+    actions/
+      Redux actions
+    components/
+    app.js - Primary React component
+    no-match.js - 404/error component
+      authentication/
+        Authentication related components (login, signup, etc)
+      diary/
+        film-cards/
+          Film diary card components
+        film-diary/
+          Film diary components
+      header/
+        Header components
+        menu/
+          Hamburger menu components
+      landing/
+        Landing page components
+      modals/
+        Modal components
+      search/
+        Search components
+    reducers/
+      Redux reducers
+    store/
+      Redux store
+
+server/
+  README.md
+  Procfile - Heroku procfile
+  config.js - DB and CORS configuration
+  db-mongoose.js - DB connection functions
+  index.js - Express.js server
+  package.json
+  .env - Dotenv environmental variables
+
+  controllers/
+    Route controller logic functions
+  db/
+    Database seeder
+  models/
+    Mongoose models
+  passport/
+    JWT and local authentication strategies
+  routes/
+    Express routing
+  test/
+    Mocha/Chai testing
+```
