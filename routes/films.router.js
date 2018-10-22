@@ -14,14 +14,12 @@ router.use(
   passport.authenticate('jwt', { session: false, failWithError: true })
 );
 
-/* GET/POST */
+/* GET/POST/PUT/DELETE */
 router
   .route('/')
   .get(FilmController.getAllFilms)
   .post(FilmController.createNewFilm)
   .put(FilmController.updateFilmRating)
   .delete(FilmController.deleteFilm);
-
-/* GET/PUT/DELETE by ID */
 
 module.exports = router;

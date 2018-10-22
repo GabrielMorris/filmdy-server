@@ -6,18 +6,10 @@ const Films = require('../models/films');
 
 // Get all films
 exports.getAllFilms = function(req, res, next) {
-  // const { folderID, tagID } = req.query;
   const userID = req.user.id;
-  console.log('userid ', req.user.id);
 
-  console.log(req.query);
-
-  console.log(userID);
   Films.find({ userID })
-    .then(results => {
-      console.log(results);
-      res.json(results);
-    })
+    .then(results => res.json(results))
     .catch(next);
 };
 
@@ -28,30 +20,20 @@ exports.updateFilmRating = function(req, res, next) {
 
   Films.findOne({ userID })
     .then(existingDiary => {
-      console.log(existingDiary);
-
       const updatedDiary = existingDiary;
 
       updatedDiary.diaryFilms.map(film => {
         if (film.imdbID === imdbID) {
-          console.log('HITTING THE IF BLOCK');
           film.userRating = !film.userRating;
           return film;
         }
-        console.log('NOT HITTING THE IF BLOCK');
         return film;
       });
-      console.log(existingDiary.diaryFilms);
-      console.log(updatedDiary.diaryFilms);
-
       return updatedDiary;
     })
     .then(updatedDiary => {
       return Films.findOneAndUpdate({ userID }, updatedDiary, { new: true })
-        .then(result => {
-          console.log(result);
-          return result;
-        })
+        .then(result => result)
         .catch(error => next(error));
     })
     .then(result => res.status(200).json(result))
@@ -101,7 +83,6 @@ exports.createNewFilm = function(req, res, next) {
 
   Films.findOne({ userID })
     .then(existingDiary => {
-      console.log(existingDiary);
       existingDiary.diaryFilms.push(film);
 
       return existingDiary;
@@ -109,7 +90,6 @@ exports.createNewFilm = function(req, res, next) {
     .then(newDiary => {
       return Films.findOneAndUpdate({ userID }, newDiary, { new: true })
         .then(result => {
-          console.log(result);
           return result;
         })
         .catch(error => next(error));
@@ -127,8 +107,6 @@ exports.deleteFilm = function(req, res, next) {
 
   Films.findOne({ userID })
     .then(existingDiary => {
-      console.log(existingDiary);
-
       const updatedDiary = existingDiary;
 
       updatedDiary.diaryFilms = updatedDiary.diaryFilms.filter(
@@ -139,14 +117,9 @@ exports.deleteFilm = function(req, res, next) {
     })
     .then(updatedDiary => {
       return Films.findOneAndUpdate({ userID }, updatedDiary, { new: true })
-        .then(result => {
-          console.log(result);
-          return result;
-        })
+        .then(result => result)
         .catch(error => next(error));
     })
-    .then(() => {
-      res.status(204).end();
-    })
+    .then(() => res.status(204).end())
     .catch(error => next(error));
 };

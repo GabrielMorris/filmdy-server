@@ -60,7 +60,6 @@ exports.createNewUser = function(req, res, next) {
       return User.create(newUser);
     })
     .then(result => {
-      console.log(result);
       userID = result.id;
       return res
         .status(201)
