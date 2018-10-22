@@ -7,7 +7,9 @@ const Films = require('../models/films');
 // Get all films
 exports.getAllFilms = function(req, res, next) {
   // const { folderID, tagID } = req.query;
-  const { userID } = req.query;
+  const userID = req.user.id;
+  console.log('userid ', req.user.id);
+
   console.log(req.query);
 
   console.log(userID);
@@ -21,7 +23,8 @@ exports.getAllFilms = function(req, res, next) {
 
 // Update film by ID
 exports.updateFilmRating = function(req, res, next) {
-  const { userID, imdbID } = req.body;
+  const { imdbID } = req.body;
+  const userID = req.user.id;
 
   Films.findOne({ userID })
     .then(existingDiary => {
@@ -57,8 +60,8 @@ exports.updateFilmRating = function(req, res, next) {
 
 // Create new film
 exports.createNewFilm = function(req, res, next) {
-  const { userID, film } = req.body;
-  console.log(req.user.id);
+  const { film } = req.body;
+  const userID = req.user.id;
 
   /* === Validate the film === */
   const requiredKVPs = [
@@ -119,7 +122,8 @@ exports.createNewFilm = function(req, res, next) {
 
 // Delete film
 exports.deleteFilm = function(req, res, next) {
-  const { userID, imdbID } = req.body;
+  const { imdbID } = req.body;
+  const userID = req.user.id;
 
   Films.findOne({ userID })
     .then(existingDiary => {

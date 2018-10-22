@@ -82,20 +82,4 @@ exports.createNewUser = function(req, res, next) {
       }
       next(err);
     });
-
-  // return User.create({ username, password })
-  //   .then(result => {
-  //     return res
-  //       .status(201)
-  //       .location(`/api/users/${result.id}`)
-  //       .json(result);
-  //   })
-  //   .catch(error => {
-  //     if (error.code === 11000) {
-  //       err = new Error('The username already exists');
-  //       err.status = 400;
-
-  //       next(err);
-  //     }
-  //   });
 };
