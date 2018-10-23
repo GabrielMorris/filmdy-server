@@ -3,3 +3,10 @@ node_js: node
 services: mongodb
 script:
   - npm run travis
+deploy:
+  provider: heroku
+  api_key:
+    secure: Im++P1xCbbyOYmjlfNyUuu/nDKNtR+rXJznSvPD9NsWHE8Uu5EFqF0lRIZ5i3JWNAnwOWiezrx1wzj522MLbt3IUlX33WkaROu0+koIVWel7j+9kdLpHdlD3eDscrF7R/BH/tyCsHTV42gOBVd5my66VVkxA9oBzhZE0gOqQWeMlmf0+Tx/4GqUnEHKxMfYgGi0eKz5a17IBIFStwbiyYfYN8nM5of8d4eOxDqkeVHBDjLZNX1m4cTByITTdrtTZCzcCRglwIMpnEutP292QeJ0uKtiUnC04l1DAFDtH1yTTjTZzIvzukfWokMwqAy1dKJzOSlWE5c7XzaaC0FnGgIJdlz2tvghhofh9xib3URYCJMCcD97cQD9PZlxgxl4bhFqA9OIYcv6zEqTAg83Y6sk7ohhN1uPEdR7sRnbaPBiL6yQwwgpG+XGw7IBUNy9yTswuDNgWg21+aj3dnrU1fh02HJJxWfX0YLcxoqU/nSoWmasgl3jN4G7k9+pUKaFphjiVaJ+HMSpctzoPCuNf/Kx4IbgfpERebYzxqI3cIt/rq9YB7LwcRAGVQdIvT7sv5V4HpgKraHpqVc02qxi9PI4RM06rr5piGHBtMe4hR1ajnQ9sUYNPAMW6AuubH20gR3X74yMlYcCzm+yQMA21fb1GuSmZR47gr4GyIGXW2Ro=
+  app: filmdy-backend
+  on:
+    repo: GabrielMorris/filmdy-server
