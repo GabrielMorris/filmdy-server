@@ -52,7 +52,6 @@ describe('Auth route test', function() {
       .post('/api/login')
       .send({ username: 'bobuser', password: 'password' })
       .then(res => {
-        console.log(res.body);
         expect(res).to.exist;
         expect(res.body).to.have.keys('authToken');
         expect(res.body.authToken).to.be.a('string');
@@ -68,7 +67,6 @@ describe('Auth route test', function() {
       .send({ username: 'bobuser', password: 'password' })
       .then(res => {
         authToken = res.body.authToken;
-        console.log(res.body);
         expect(res).to.exist;
         expect(res.body).to.have.keys('authToken');
         expect(res.body.authToken).to.be.a('string');

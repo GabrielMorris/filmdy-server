@@ -68,7 +68,6 @@ describe('Auth route test', function() {
           .set('Authorization', `Bearer ${authToken}`)
           .then(_res => {
             res = _res;
-            console.log(_res.body);
             expect(_res.body).to.be.an('array');
             expect(_res.body.length).to.be.greaterThan(0);
           });
@@ -110,7 +109,6 @@ describe('Auth route test', function() {
           .set('Authorization', `Bearer ${authToken}`)
           .then(_res => {
             res = _res;
-            console.log(_res.body);
             expect(_res.body).to.be.an('object');
           });
       })
@@ -118,7 +116,6 @@ describe('Auth route test', function() {
         return Films.findOne({ userID: res.body.userID });
       })
       .then(diary => {
-        console.log(diary);
         expect(res.body.diaryFilms).to.deep.equal(diary.diaryFilms);
       });
   });
@@ -172,7 +169,6 @@ describe('Auth route test', function() {
           .send({ film: newFilm })
           .set('Authorization', `Bearer ${authToken}`)
           .then(_res => {
-            console.log(_res.body);
             expect(_res.body).to.have.keys('status', 'message');
             expect(_res.body.message).to.equal('Missing keys in request body');
           });
