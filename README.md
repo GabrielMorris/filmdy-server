@@ -71,6 +71,8 @@ client/
   config.js - DB/API configuration
   index.js - Root React component
   local-storage.js - Functions for managing localStorage
+    __tests__/
+      Frontend tests
     actions/
       Redux actions
     components/
