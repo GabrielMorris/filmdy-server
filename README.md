@@ -8,6 +8,8 @@ Filmdy is a film diary application built with React, Redux, MongoDB, and Node.js
 
 You can find Filmdy hosted [here](https://filmdy-client.herokuapp.com/) on Heroku.
 
+Demo account: demoaccount/demoaccount
+
 ## Screenshots
 
 ### Landing page
